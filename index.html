@@ -1,1 +1,639 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سكنك | Sakanak - ابحث عن غرفتك وشريك سكنك بدون وسيط</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #10b981;
+      --primary-hover: #059669;
+      --primary-light: #ecfdf5;
+      --dark: #0f172a;
+      --dark-card: #1e293b;
+      --gray-light: #f8fafc;
+      --text-main: #334155;
+      --text-muted: #64748b;
+      --white: #ffffff;
+      --border: #e2e8f0;
+      --accent: #f59e0b;
+    }
 
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Cairo', sans-serif;
+    }
+
+    body {
+      background-color: var(--gray-light);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 18px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo {
+      font-size: 26px;
+      font-weight: 900;
+      color: var(--dark);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-btn {
+      background: var(--primary);
+      color: var(--white);
+      padding: 10px 22px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+    }
+
+    .nav-btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 70px 5% 90px;
+      background: radial-gradient(circle at top right, #d1fae5, transparent 50%),
+                  radial-gradient(circle at bottom left, #e0f2fe, transparent 50%),
+                  #ffffff;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary-hover);
+      font-weight: 700;
+      font-size: 14px;
+      padding: 6px 16px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+      border: 1px solid #a7f3d0;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 35px;
+    }
+
+    /* Search Bar */
+    .search-box {
+      background: var(--white);
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 12px;
+      border-radius: 18px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) auto;
+      gap: 10px;
+      align-items: center;
+      border: 1px solid var(--border);
+    }
+
+    .search-field {
+      padding: 8px 14px;
+      text-align: right;
+    }
+
+    .search-field label {
+      display: block;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 4px;
+    }
+
+    .search-field select, .search-field input {
+      width: 100%;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--dark);
+      background: transparent;
+    }
+
+    .search-btn {
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .search-btn:hover {
+      background: var(--primary-hover);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 70px 5%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 16px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      padding: 30px 24px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      text-align: right;
+      transition: all 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.05);
+      border-color: var(--primary);
+    }
+
+    .feature-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 14px;
+      background: var(--primary-light);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 18px;
+    }
+
+    .feature-card h3 {
+      font-size: 19px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .feature-card p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Listings Section */
+    .listings {
+      padding: 70px 5%;
+      background: var(--white);
+    }
+
+    .listings-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+      display: flex;
+      flex-direction: column;
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-img-wrap {
+      position: relative;
+      height: 210px;
+      overflow: hidden;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .card-img {
+      transform: scale(1.05);
+    }
+
+    .card-tag {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(15, 23, 42, 0.85);
+      color: var(--white);
+      padding: 5px 12px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+      backdrop-filter: blur(5px);
+    }
+
+    .gender-tag {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: var(--primary);
+      color: var(--white);
+      padding: 5px 12px;
+      border-radius: 30px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .card-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-location {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 12px;
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 15px;
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .card-price {
+      font-size: 18px;
+      font-weight: 900;
+      color: var(--primary-hover);
+    }
+
+    .card-price span {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: var(--white);
+      text-decoration: none;
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: 0.2s;
+    }
+
+    .btn-whatsapp:hover {
+      background: #1ebc59;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 80px 5%;
+      background: linear-gradient(135deg, #064e3b, #0f172a);
+      color: var(--white);
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 36px;
+      font-weight: 900;
+      margin-bottom: 15px;
+    }
+
+    .cta p {
+      color: #94a3b8;
+      font-size: 17px;
+      max-width: 600px;
+      margin: 0 auto 30px;
+    }
+
+    .cta-btn {
+      background: var(--primary);
+      color: var(--white);
+      padding: 14px 34px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 16px;
+      display: inline-block;
+      transition: 0.3s;
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    }
+
+    .cta-btn:hover {
+      background: var(--primary-hover);
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: #64748b;
+      padding: 30px 5%;
+      text-align: center;
+      font-size: 14px;
+      border-top: 1px solid #1e293b;
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 30px; }
+      .hero p { font-size: 15px; }
+      .search-box { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo">🏠 سكنك <span>.Sakanak</span></a>
+    <a href="#" id="navWhatsappBtn" class="nav-btn">💬 تواصل معنا</a>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="badge">✨ المنصة الأولى لسكن الطلاب والمغتربين في مصر</div>
+    <h1>ابحث عن <span>غرفتك المثالية</span> وشريك سكن موثوق</h1>
+    <p>تصفح آلاف الغرف والشقق المشتركة بالقرب من الجامعات والمناطق الحيوية، بدون عمولات سمسرة وبتوثيق كامل للأمان والخصوصية.</p>
+
+    <!-- Search Filter Bar -->
+    <div class="search-box">
+      <div class="search-field">
+        <label>المدينة / المنطقة</label>
+        <select>
+          <option>القاهرة - التجمع الخامس</option>
+          <option>القاهرة - المعادي</option>
+          <option>الجيزة - الشيخ زايد / 6 أكتوبر</option>
+          <option>القاهرة - مدينة نصر</option>
+          <option>الإسكندرية</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>نوع السكن</label>
+        <select>
+          <option>غرفة فردية (Private)</option>
+          <option>غرفة مشتركة (Shared)</option>
+          <option>شقة بالكامل (Full Flat)</option>
+        </select>
+      </div>
+      <div class="search-field">
+        <label>سكن مخصص لـ</label>
+        <select>
+          <option>شباب (Boys Only)</option>
+          <option>بنات (Girls Only)</option>
+        </select>
+      </div>
+      <button class="search-btn" id="heroSearchBtn">بحث فوري</button>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="section-title">
+      <h2>لماذا يفضل الآلاف منصة سكنك؟</h2>
+      <p>صممنا كل تفصيلة لتجعل تجربة إيجاد السكن سهلة، آمنة ومريحة</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🛡️</div>
+        <h3>هويات موثقة 100%</h3>
+        <p>يتم فحص وتأكيد هوية المعلنين والشركاء لضمان بيئة سكنية آمنة وموثوقة تماماً.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🚫</div>
+        <h3>صفر عمولة ووسطاء</h3>
+        <p>تواصل مباشرة مع المالك أو شريك السكن وتجنب دفع عمولات السماسرة ورسوم المعاينات الوهمية.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">🤝</div>
+        <h3>توافق شريك السكن</h3>
+        <p>نساعدك في اختيار شريك سكن يشاركك نفس العادات والاهتمامات ومواعيد الدراسة أو العمل.</p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">📍</div>
+        <h3>بالقرب من جامعتك</h3>
+        <p>وحدات سكنية بجوار كبرى الجامعات (AUC، جامعة القاهرة، عين شمس، وغيرها) ومحطات المواصلات.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Listings -->
+  <section class="listings">
+    <div class="section-title">
+      <h2>أحدث الغرف المتاحة الآن</h2>
+      <p>عروض مميزة وجاهزة للسكن الفوري في أرقى المناطق</p>
+    </div>
+
+    <div class="listings-grid">
+      <!-- Card 1 -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&w=600&q=80" alt="غرفة المعادي" class="card-img">
+          <span class="card-tag">غرفة خاصة</span>
+          <span class="gender-tag">شباب فقط</span>
+        </div>
+        <div class="card-body">
+          <div class="card-location">📍 القاهرة، المعادي ودجلة</div>
+          <h3 class="card-title">غرفة ماستر مفروشة بالكامل ومكيفة</h3>
+          <div class="card-meta">
+            <span>🛏️ سرير مفرد</span>
+            <span>🚿 حمام خاص</span>
+            <span>📶 واي فاي فائق السرعة</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">6,500 ج.م <span>/ شهرياً</span></div>
+            <a href="#" class="btn-whatsapp btn-book" data-property="غرفة ماستر في المعادي (6500 ج.م)">💬 استفسر بالواتساب</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=600&q=80" alt="غرفة التجمع" class="card-img">
+          <span class="card-tag">غرفة خاصة</span>
+          <span class="gender-tag">بنات فقط</span>
+        </div>
+        <div class="card-body">
+          <div class="card-location">📍 القاهرة الجديدة، التجمع الخامس</div>
+          <h3 class="card-title">سكن هادئ بالقرب من الجامعة الأمريكية (AUC)</h3>
+          <div class="card-meta">
+            <span>🛏️ سرير كبير</span>
+            <span>🧹 خدمة نظافة أسبوعية</span>
+            <span>⚡ شامل الفواتير</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">8,000 ج.م <span>/ شهرياً</span></div>
+            <a href="#" class="btn-whatsapp btn-book" data-property="سكن طالبات في التجمع الخامس (8000 ج.م)">💬 استفسر بالواتساب</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="card">
+        <div class="card-img-wrap">
+          <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=600&q=80" alt="غرفة زايد" class="card-img">
+          <span class="card-tag">غرفة مشتركة</span>
+          <span class="gender-tag">شباب فقط</span>
+        </div>
+        <div class="card-body">
+          <div class="card-location">📍 الجيزة، الشيخ زايد</div>
+          <h3 class="card-title">سرير في غرفة ثنائية كمبوند راقي</h3>
+          <div class="card-meta">
+            <span>👥 فردين فقط</span>
+            <span>🏊 إمكانية دخول النادي</span>
+            <span>❄️ تكييف مركزي</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">4,000 ج.م <span>/ شهرياً</span></div>
+            <a href="#" class="btn-whatsapp btn-book" data-property="سرير مشترك في الشيخ زايد (4000 ج.م)">💬 استفسر بالواتساب</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>عندك غرفة أو شقة وعايز تأجرها؟</h2>
+    <p>انضم إلى منصة سكنك واعرض غرفتك لآلاف الباحثين عن سكن وطلاب الجامعات بدون أي عمولات.</p>
+    <a href="#" id="ctaWhatsappBtn" class="cta-btn">📢 أضف غرفتك الآن مجاناً</a>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 منصة سكنك (Sakanak). جميع الحقوق محفوظة.</p>
+  </footer>
+
+  <script>
+    // 1. استخراج رقم الواتساب من الرابط (?phone=...) أو استخدام رقم افتراضي
+    const urlParams = new URLSearchParams(window.location.search);
+    const defaultPhone = "201000000000"; // يمكنك استبدال هذا الرقم برقم هاتفك مسبوقاً بكود الدولة
+    const phone = urlParams.get('phone') || defaultPhone;
+
+    // 2. تحديث روابط التواصل العامة
+    const generalMsg = encodeURIComponent("مرحباً، أود الاستفسار عن تفاصيل السكن المتاح على منصة سكنك.");
+    const generalUrl = `https://wa.me/${phone}?text=${generalMsg}`;
+
+    document.getElementById('navWhatsappBtn').href = generalUrl;
+    document.getElementById('ctaWhatsappBtn').href = generalUrl;
+    document.getElementById('heroSearchBtn').addEventListener('click', () => {
+      window.open(generalUrl, '_blank');
+    });
+
+    // 3. تحديث أزرار حجز الغرف المحددة
+    document.querySelectorAll('.btn-book').forEach(btn => {
+      const property = btn.getAttribute('data-property');
+      const propMsg = encodeURIComponent(`مرحباً، أود الاستفسار وحجز: (${property}) المعروضة على منصة سكنك.`);
+      btn.href = `https://wa.me/${phone}?text=${propMsg}`;
+      btn.target = "_blank";
+    });
+  </script>
+</body>
+</html>
